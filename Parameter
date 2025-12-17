@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace VoidMetod
+{
+    public partial class Form3 : Form
+    {
+        public Form3()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string letter = (string)textBox1.Text;
+            int size = int.Parse(textBox2.Text);
+          
+            if (radioButton1.Checked)
+            {
+                
+                textBox3.Text = Triangle1(letter, size); //Value
+            }
+            else if (radioButton2.Checked)
+            {
+
+                textBox3.Text = Triangle2(letter, size); //Optional
+
+            }
+            else if (radioButton3.Checked)
+            {
+
+                textBox3.Text = Triangle3(letter, size); //Outout
+
+            }
+            else
+            {
+               MessageBox.Show("กรุณาเลือกประเภท");
+            }          
+
+
+        }
+
+        //Value
+        private string Triangle1(string letter, int size)
+        {
+            throw new NotImplementedException();
+        }
+
+        //Value
+
+        //Optional
+        private string Triangle2(string letter, int size)
+        {
+            throw new NotImplementedException();
+        }
+
+        //Optional
+
+        //Outout
+        private string Triangle3(string letter, int size)
+        {
+            throw new NotImplementedException();
+        }
+
+        //Outout
+    }
+}
