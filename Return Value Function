@@ -1,0 +1,111 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace VoidMetod
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            double height = 0.0;
+            double Long = 0.0;
+            double tarea = 0.0;
+
+            if (double.TryParse(textBox1.Text, out height) &&
+               double.TryParse(textBox2.Text, out Long))
+            {
+                tarea = CalculateArea(height, Long);
+                label6.Text = "พื้นที่สามเหลี่ยม = " + tarea.ToString("F2");
+
+            }
+        }
+
+        private double CalculateArea(double height, double Long)
+        {
+            double tarea = (height * Long) / 2.0;
+            return tarea;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            double radain = 0.0;
+
+            if (double.TryParse(textBox4.Text, out radain))
+            {
+                double area = CalculateCircleAreaf(radain);
+                label13.Text = "พื้นที่วงกลม = " + area.ToString("F2");
+
+                double circumference = CalculateCircleArea(radain);
+                label9.Text = "เส้นรอบวง = " + circumference.ToString("F2");
+            }
+        }
+
+        private double CalculateCircleArea(double radain)
+        {
+
+            return 2 * Math.PI * radain;
+        }
+
+        private double CalculateCircleAreaf(double radain)
+        {
+
+            return Math.PI * radain * radain;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            int i = 0;
+            if (int.TryParse(textBox5.Text, out i))
+            {
+                label17.Text = i.ToString();
+                label16.Text = RandomNextNumber(ref i).ToString();
+                textBox5.Text = i.ToString();
+            }
+        }
+
+        private object RandomNextNumber(ref int x)
+        {
+            Random rand = new Random();
+            x += rand.Next(1, 100);
+            return x;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            double sumary = 0.0;
+            string[] inputs = textBox3.Lines;
+            double[] number = new double[inputs.Length];
+
+
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                if (!double.TryParse(inputs[i], out number[i]))
+                {
+
+                    number[i] = 0.0;
+
+                }
+
+                sumary = CalculateSumary(number);
+                MessageBox.Show("ผลรวม = " + sumary.ToString("F2"));
+
+            }
+        }
+
+        private double CalculateSumary(double[] number)
+        {
+            return number.Sum();
+        }
+    }
+}
